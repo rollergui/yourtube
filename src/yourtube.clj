@@ -27,9 +27,11 @@
 (defn save-video
   "downloads and stores the video on disk"
   [video-id]
+  (when-not (.exists (io/file "output"))
+    (.mkdir (io/file "output")))
   (let [p (fetch-file (get-video-url video-id))]
     (if (not (nil? p))
-      (with-open [w (io/output-stream (str video-id ".mp4"))]
+      (with-open [w (io/output-stream (str "output/" video-id ".mp4"))]
         (.write w p)))))
 
 (defn -main
