@@ -15,9 +15,13 @@ java -jar yourtube.jar "https://www.youtube.com/watch?v=3QFhxUyMyM4"
 ```
 video file will be downloaded to current directory
 
+OR if you have docker installed, that's an option as well. build the image and run it as:
+```sh
+docker run -v $(pwd)/output:/app/output image-name "video-url"
+```
+
 ## feature plan:
 
-- containerized application
 - options to choose:
   - video quality
   - audio only
